@@ -47,7 +47,7 @@
     <Compile Include="Gameplay.cs" />
     <Compile Include="MatrixGenerator.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="PlayGameFifteen.cs" />
     <Compile Include="Scoreboard.cs" />
     <Compile Include="Tile.cs" />
   </ItemGroup>

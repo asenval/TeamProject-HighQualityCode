@@ -8,7 +8,7 @@ namespace GameFifteenProject
 
     // mnogo sym dobyr programist, u4astvam v TopCoder i sam purvi ot Sliven i regiona
 
-    class Program
+    public class PlayGameFifteen
     {
         private static void Menu()
         {
