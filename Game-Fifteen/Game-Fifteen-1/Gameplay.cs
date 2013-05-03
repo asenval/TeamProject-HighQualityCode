@@ -20,7 +20,7 @@ namespace GameFifteenProject
             for (int index = 0; index < 16; index++)
             {
                 Tile currentElement = sourceMatrix.ElementAt(index);
-                
+
                 if (currentElement.Label == String.Empty)
                 {
                     Console.Write("   ");
@@ -84,7 +84,7 @@ namespace GameFifteenProject
             foreach (Tile tile in tiles)
             {
                 int tileLabelInt = 0;
-                Int32.TryParse(tile.Label,out tileLabelInt);
+                Int32.TryParse(tile.Label, out tileLabelInt);
                 if (tileLabelInt == (tile.Position + 1))
                 {
                     count++;
@@ -147,7 +147,5 @@ namespace GameFifteenProject
             }
             return result;
         }
-
-
     }
 }

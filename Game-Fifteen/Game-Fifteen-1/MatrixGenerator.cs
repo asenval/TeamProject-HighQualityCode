@@ -23,8 +23,6 @@ namespace GameFifteenProject
 
                 Tile tempTile = new Tile(tileName, index);
                 tiles.Add(tempTile);
-
-
             }
 
             Tile emptyTile = new Tile(string.Empty, 15);
@@ -45,9 +43,6 @@ namespace GameFifteenProject
             }
 
             return resultMatrix;
-
-
-
         }
         private static List<Tile> MoveFreeTile(List<Tile> resultMatrix)
         {
@@ -57,12 +52,10 @@ namespace GameFifteenProject
 
             foreach (Tile tile in resultMatrix)
             {
-
-
                 neighbourTiles = GenerateNeighbourTilesList(freeTile, tile, neighbourTiles);
             }
 
-            int switchedindexNumber = random.Next()%(neighbourTiles.Count());
+            int switchedindexNumber = random.Next() % (neighbourTiles.Count());
             Tile targetTile = neighbourTiles[switchedindexNumber];
 
             int targetTilePosition = targetTile.Position;
@@ -74,9 +67,6 @@ namespace GameFifteenProject
         }
         private static Tile DetermineFreeTile(List<Tile> resultMatrix)
         {
-
-
-
             Tile freeTile = new Tile();
 
             foreach (Tile tile in resultMatrix)
@@ -94,8 +84,6 @@ namespace GameFifteenProject
             bool areValidNeighbourTiles = AreValidNeighbourTiles(freeTile, tile);
             if (areValidNeighbourTiles)
             {
-
-
                 neighbourTiles.Add(tile);
             }
             return neighbourTiles;
@@ -111,8 +99,5 @@ namespace GameFifteenProject
 
             return validNeigbour;
         }
-
-
-
     }
 }

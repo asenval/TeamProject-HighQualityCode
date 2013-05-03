@@ -15,7 +15,7 @@ namespace GameFifteenProject
             players.Sort();
             DeleteAllExceptTopPlayers();
         }
-        
+
         public static void PrintScoreboard()
         {
             Console.WriteLine("Scoreboard:");
@@ -36,6 +36,5 @@ namespace GameFifteenProject
                 }
             }
         }
-
     }
 }

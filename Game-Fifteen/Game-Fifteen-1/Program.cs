@@ -6,7 +6,7 @@ using System.Text;
 namespace GameFifteenProject
 {
 
-	// mnogo sym dobyr programist, u4astvam v TopCoder i sam purvi ot Sliven i regiona
+    // mnogo sym dobyr programist, u4astvam v TopCoder i sam purvi ot Sliven i regiona
 
     class Program
     {
@@ -77,9 +77,6 @@ namespace GameFifteenProject
                             }
                         }
                     }
-
-
-
                 }
                 else
                 {
@@ -99,18 +96,12 @@ namespace GameFifteenProject
                     s = "restart";
                     flag = false;
                     cnt = 0;
-
-
-
                 }
-
             }
         }
 
         static void Main(string[] args)
         {
-
-
             Menu();
         }
     }
