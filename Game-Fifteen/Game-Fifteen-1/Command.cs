@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GameFifteenProject
 {
-    static class Command
+    public static class Command
     {
         private enum Commands { restart, top, exit };
 
-        public static string CommandType(string input)
+        public static string CommandType(string command)
         {
-            string inputToLower = input.ToLower();
-            string output;
+            string commandToLower = command.ToLower();
 
-            if (inputToLower == Commands.exit.ToString() || inputToLower == Commands.restart.ToString() || inputToLower == Commands.top.ToString())
+            if (commandToLower == Commands.exit.ToString() || commandToLower == Commands.restart.ToString() || commandToLower == Commands.top.ToString())
             {
-                output = inputToLower;
+                return commandToLower;
             }
             else
             {
                 throw new ArgumentException("Invalid Command!");
             }
-
-            return output;
         }
 
     }

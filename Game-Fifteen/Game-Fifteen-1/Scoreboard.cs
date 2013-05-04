@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GameFifteenProject
 {
-    static class Scoreboard
+    public static class Scoreboard
     {
         private static List<Player> players = new List<Player>();
 

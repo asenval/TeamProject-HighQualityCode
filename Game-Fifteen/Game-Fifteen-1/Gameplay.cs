@@ -1,41 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GameFifteenProject
 {
-    static class Gameplay
+    public static class Gameplay
     {
+        private const int HorizontalNeighbourDistance = 1;
+        private const int VerticalNeighbourDistance = 4;
+        private const int MatrixSize = 4;
 
-        private const int HORIZONTAL_NEIGHBOUR_TILE = 1;
-        private const int VERTICAL_NEIGHBOUR_TILE = 4;
-        private const int MATRIX_SIZE = 4;
-
-        public static void PrintMatrix(List<Tile> sourceMatrix)
+        public static void PrintMatrix(List<Tile> tilesMatrix)
         {
             Console.WriteLine("  ------------");
             Console.Write("| ");
-            int rowCounter = 0;
+            int currentColumn = 0;
             for (int index = 0; index < 16; index++)
             {
-                Tile currentElement = sourceMatrix.ElementAt(index);
+                Tile currentTile = tilesMatrix.ElementAt(index);
 
-                if (currentElement.Label == String.Empty)
+                if (currentTile.Label == String.Empty)
                 {
                     Console.Write("   ");
                 }
-                else if (Int32.Parse(currentElement.Label) < 10)
+                else if (Int32.Parse(currentTile.Label) < 10)
                 {
-                    Console.Write(' ' + currentElement.Label + ' ');
+                    Console.Write(' ' + currentTile.Label + ' ');
                 }
                 else
                 {
-                    Console.Write(currentElement.Label + ' ');
+                    Console.Write(currentTile.Label + ' ');
                 }
 
-                rowCounter++;
-                if (rowCounter == 4)
+                currentColumn++;
+                if (currentColumn == 4)
                 {
                     Console.Write(" |");
                     Console.WriteLine();
@@ -43,49 +41,49 @@ namespace GameFifteenProject
                     {
                         Console.Write("| ");
                     }
-                    rowCounter = 0;
+                    currentColumn = 0;
                 }
             }
 
             Console.WriteLine("  ------------");
         }
 
-        public static List<Tile> MoveTiles(List<Tile> tiles, int tileValue)
+        public static List<Tile> MoveTiles(List<Tile> tilesMatrix, int tileLabel)
         {
-            if (tileValue < 0 || tileValue > 15)
+            if (tileLabel < 0 || tileLabel > 15)
             {
                 throw new ArgumentException("Invalid move!");
             }
 
-            List<Tile> resultMatrix = tiles;
-            Tile freeTile = tiles[GetFreeTilePosition(tiles)];
-            Tile tile = tiles[GetDestinationTilePosition(tiles, tileValue)];
+            List<Tile> newMatrix = tilesMatrix;
+            Tile emptyTile = tilesMatrix[GetEmptyTilePosition(tilesMatrix)];
+            Tile targetTile = tilesMatrix[GetDestinationTilePosition(tilesMatrix, tileLabel)];
 
-            bool areValidNeighbourTiles = TilePositionValidation(tiles, freeTile, tile);
+            bool areValidNeighbours = TilePositionValidation(tilesMatrix, emptyTile, targetTile);
 
-            if (areValidNeighbourTiles)
+            if (areValidNeighbours)
             {
-                int targetTilePosition = tile.Position;
-                resultMatrix[targetTilePosition].Position = freeTile.Position;
-                resultMatrix[freeTile.Position].Position = targetTilePosition;
-                resultMatrix.Sort();
+                int targetTilePosition = targetTile.Position;
+                newMatrix[targetTilePosition].Position = emptyTile.Position;
+                newMatrix[emptyTile.Position].Position = targetTilePosition;
+                newMatrix.Sort();
             }
             else
             {
                 throw new Exception("Invalid move!");
             }
 
-            return resultMatrix;
+            return newMatrix;
         }
 
-        public static bool IsMatrixSolved(List<Tile> tiles)
+        public static bool IsMatrixSolved(List<Tile> tilesMatrix)
         {
             int count = 0;
-            foreach (Tile tile in tiles)
+            foreach (Tile tile in tilesMatrix)
             {
-                int tileLabelInt = 0;
-                Int32.TryParse(tile.Label, out tileLabelInt);
-                if (tileLabelInt == (tile.Position + 1))
+                int currentTileLabel = 0;
+                Int32.TryParse(tile.Label, out currentTileLabel);
+                if (currentTileLabel == (tile.Position + 1))
                 {
                     count++;
                 }
@@ -101,51 +99,54 @@ namespace GameFifteenProject
             }
         }
 
-        private static int GetDestinationTilePosition(List<Tile> tiles, int tileValue)
+        private static int GetDestinationTilePosition(List<Tile> tilesMatrix, int tileLabel)
         {
-            int result = 0;
-            for (int index = 0; index < tiles.Count; index++)
+            int tilePosition = 0;
+            for (int index = 0; index < tilesMatrix.Count; index++)
             {
-                int parsedLabel = 0;
-                bool successfulParsing = Int32.TryParse(tiles[index].Label, out parsedLabel);
-                if (successfulParsing && tileValue == parsedLabel)
+                int currentTileLabel = 0;
+                bool successfulParsing = Int32.TryParse(tilesMatrix[index].Label, out currentTileLabel);
+                if (successfulParsing && tileLabel == currentTileLabel)
                 {
-                    result = index;
+                    tilePosition = index;
                 }
             }
-            return result;
+
+            return tilePosition;
         }
 
-        private static bool TilePositionValidation(List<Tile> tiles, Tile freeTile, Tile tile)
+        private static bool TilePositionValidation(List<Tile> tiles, Tile emptyTile, Tile currentTile)
         {
-            bool areValidNeighbourTiles = AreValidNeighbourTiles(freeTile, tile);
+            bool areValidNeighbours = AreValidNeighbours(emptyTile, currentTile);
 
-            return areValidNeighbourTiles;
+            return areValidNeighbours;
         }
 
-        private static bool AreValidNeighbourTiles(Tile freeTile, Tile tile)
+        private static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
         {
-            int tilesDistance = freeTile.Position - tile.Position;
+            int tilesDistance = emptyTile.Position - currentTile.Position;
             int tilesAbsoluteDistance = Math.Abs(tilesDistance);
-            bool isValidHorizontalNeighbour =
-                (tilesAbsoluteDistance == HORIZONTAL_NEIGHBOUR_TILE && !(((tile.Position + 1) % MATRIX_SIZE == 1 && tilesDistance == -1) || ((tile.Position + 1) % MATRIX_SIZE == 0 && tilesDistance == 1)));
-            bool isValidVerticalNeighbour = (tilesAbsoluteDistance == VERTICAL_NEIGHBOUR_TILE);
-            bool validNeigbour = isValidHorizontalNeighbour || isValidVerticalNeighbour;
+            bool areValidHorizontalNeighbours =
+                (tilesAbsoluteDistance == HorizontalNeighbourDistance && !(((currentTile.Position + 1) % MatrixSize == 1 && tilesDistance == -1) || ((currentTile.Position + 1) % MatrixSize == 0 && tilesDistance == 1)));
+            bool areValidVerticalNeighbours = (tilesAbsoluteDistance == VerticalNeighbourDistance);
+            bool areValidNeigbours = areValidHorizontalNeighbours || areValidVerticalNeighbours;
 
-            return validNeigbour;
+            return areValidNeigbours;
         }
 
-        private static int GetFreeTilePosition(List<Tile> tiles)
+        private static int GetEmptyTilePosition(List<Tile> tilesMatrix)
         {
-            int result = 0;
-            for (int index = 0; index < tiles.Count; index++)
+            int emptyTilePosition = 0;
+            for (int index = 0; index < tilesMatrix.Count; index++)
             {
-                if (tiles[index].Label == String.Empty)
+                if (tilesMatrix[index].Label == String.Empty)
                 {
-                    result = index;
+                    emptyTilePosition = index;
+                    break;
                 }
             }
-            return result;
+
+            return emptyTilePosition;
         }
     }
 }

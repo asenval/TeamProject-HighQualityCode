@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GameFifteenProject
 {
-
-    // mnogo sym dobyr programist, u4astvam v TopCoder i sam purvi ot Sliven i regiona
-
     public class PlayGameFifteen
     {
         private static void Menu()
         {
-            List<Tile> tiles = new List<Tile>();
-            int cnt = 0;
-            string s = "restart";
-            bool flag = false;
+            List<Tile> tilesMatrix = new List<Tile>();
+            int movesCount = 0;
+            string command = "restart";
+            bool isMatrixSolved = false;
 
-            while (s != "exit")
+            while (command != "exit")
             {
-                if (!flag)
+                if (!isMatrixSolved)
                 {
-                    switch (s)
+                    switch (command)
                     {
                         case "restart":
                             {
@@ -30,10 +26,10 @@ namespace GameFifteenProject
                                 welcomeMessage = welcomeMessage + " \nto quit the game.";
                                 Console.WriteLine();
                                 Console.WriteLine(welcomeMessage);
-                                tiles = MatrixGenerator.GenerateMatrix();
-                                tiles = MatrixGenerator.ShuffleMatrix(tiles);
-                                flag = Gameplay.IsMatrixSolved(tiles);
-                                Gameplay.PrintMatrix(tiles);
+                                tilesMatrix = MatrixGenerator.GenerateMatrix();
+                                tilesMatrix = MatrixGenerator.ShuffleMatrix(tilesMatrix);
+                                isMatrixSolved = Gameplay.IsMatrixSolved(tilesMatrix);
+                                Gameplay.PrintMatrix(tilesMatrix);
                                 break;
                             }
                         case "top":
@@ -42,23 +38,23 @@ namespace GameFifteenProject
                                 break;
                             }
                     }
-                    if (!flag)
+                    if (!isMatrixSolved)
                     {
                         Console.Write("Enter a number to move: ");
-                        s = Console.ReadLine();
+                        command = Console.ReadLine();
 
-                        int destinationTileValue;
+                        int tileLabel;
 
-                        bool isSuccessfulParsing = Int32.TryParse(s, out destinationTileValue);
+                        bool isMovingCommand = Int32.TryParse(command, out tileLabel);
 
-                        if (isSuccessfulParsing)
+                        if (isMovingCommand)
                         {
                             try
                             {
-                                Gameplay.MoveTiles(tiles, destinationTileValue);
-                                cnt++;
-                                Gameplay.PrintMatrix(tiles);
-                                flag = Gameplay.IsMatrixSolved(tiles);
+                                Gameplay.MoveTiles(tilesMatrix, tileLabel);
+                                movesCount++;
+                                Gameplay.PrintMatrix(tilesMatrix);
+                                isMatrixSolved = Gameplay.IsMatrixSolved(tilesMatrix);
                             }
                             catch (Exception exception)
                             {
@@ -69,7 +65,7 @@ namespace GameFifteenProject
                         {
                             try
                             {
-                                s = Command.CommandType(s);
+                                command = Command.CommandType(command);
                             }
                             catch (ArgumentException exception)
                             {
@@ -80,27 +76,27 @@ namespace GameFifteenProject
                 }
                 else
                 {
-                    if (cnt == 0)
+                    if (movesCount == 0)
                     {
                         Console.WriteLine("Your matrix was solved by default :) Come on - NEXT try");
                     }
                     else
                     {
-                        Console.WriteLine("Congratulations! You won the game in {0} moves.", cnt);
+                        Console.WriteLine("Congratulations! You won the game in {0} moves.", movesCount);
                         Console.Write("Please enter your name for the top scoreboard: ");
                         string playerName = Console.ReadLine();
-                        Player player = new Player(playerName, cnt);
+                        Player player = new Player(playerName, movesCount);
                         Scoreboard.AddPlayer(player);
                         Scoreboard.PrintScoreboard();
                     }
-                    s = "restart";
-                    flag = false;
-                    cnt = 0;
+                    command = "restart";
+                    isMatrixSolved = false;
+                    movesCount = 0;
                 }
             }
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             Menu();
         }

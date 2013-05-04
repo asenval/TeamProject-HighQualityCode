@@ -1,103 +1,108 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GameFifteenProject
 {
-    static class MatrixGenerator
+    public static class MatrixGenerator
     {
-        private const int HORIZONTAL_NEIGHBOUR_TILE = 1;
-        private const int VERTICAL_NEIGHBOUR_TILE = 4;
-        private const int MATRIX_SIZE = 4;
-        private const int MINIMUM_CYCLES = 20;
-        private const int MAXIMUM_CYCLES = 50;
+        private const int HorizontalNeighbourDistance = 1;
+        private const int VerticalNeighbourDistance = 4;
+        private const int MatrixSize = 4;
+        private const int MinimumMoves = 20;
+        private const int MaximumMoves = 50;
         private static Random random;
+
         public static List<Tile> GenerateMatrix()
         {
-            List<Tile> tiles = new List<Tile>();
+            List<Tile> tilesMatrix = new List<Tile>();
 
-            for (int index = 0; index < 15; index++)
+            for (int tilePosition = 0; tilePosition < 15; tilePosition++)
             {
-                String tileName = (index + 1).ToString();
+                String tileLabel = (tilePosition + 1).ToString();
 
-                Tile tempTile = new Tile(tileName, index);
-                tiles.Add(tempTile);
+                Tile currentTile = new Tile(tileLabel, tilePosition);
+                tilesMatrix.Add(currentTile);
             }
 
             Tile emptyTile = new Tile(string.Empty, 15);
-            tiles.Add(emptyTile);
+            tilesMatrix.Add(emptyTile);
 
-            return tiles;
+            return tilesMatrix;
         }
-        public static List<Tile> ShuffleMatrix(List<Tile> startingMatrix)
+
+        public static List<Tile> ShuffleMatrix(List<Tile> tilesMatrix)
         {
             random = new Random();
-            int cycleCount = random.Next(MINIMUM_CYCLES, MAXIMUM_CYCLES);
-            List<Tile> resultMatrix = new List<Tile>();
-            resultMatrix = startingMatrix;
+            int movesNumber = random.Next(MinimumMoves, MaximumMoves);
+            List<Tile> shuffledMatrix = tilesMatrix;
 
-            for (int index = 0; index < cycleCount; index++)
+            for (int move = 0; move < movesNumber; move++)
             {
-                resultMatrix = MoveFreeTile(resultMatrix);
+                shuffledMatrix = MoveEmptyTile(shuffledMatrix);
             }
 
-            return resultMatrix;
+            return shuffledMatrix;
         }
-        private static List<Tile> MoveFreeTile(List<Tile> resultMatrix)
+
+        private static List<Tile> MoveEmptyTile(List<Tile> tilesMatrix)
         {
-            Tile freeTile = DetermineFreeTile(resultMatrix);
+            Tile emptyTile = DetermineEmptyTile(tilesMatrix);
 
             List<Tile> neighbourTiles = new List<Tile>();
 
-            foreach (Tile tile in resultMatrix)
+            foreach (Tile tile in tilesMatrix)
             {
-                neighbourTiles = GenerateNeighbourTilesList(freeTile, tile, neighbourTiles);
+                neighbourTiles = GenerateNeighbourTilesList(emptyTile, tile, neighbourTiles);
             }
 
-            int switchedindexNumber = random.Next() % (neighbourTiles.Count());
-            Tile targetTile = neighbourTiles[switchedindexNumber];
+            int position = random.Next() % (neighbourTiles.Count());
+            Tile neighbourTile = neighbourTiles[position];
 
-            int targetTilePosition = targetTile.Position;
-            resultMatrix[targetTile.Position].Position = freeTile.Position;
-            resultMatrix[freeTile.Position].Position = targetTilePosition;
-            resultMatrix.Sort();
+            int neighbourTilePosition = neighbourTile.Position;
+            tilesMatrix[neighbourTile.Position].Position = emptyTile.Position;
+            tilesMatrix[emptyTile.Position].Position = neighbourTilePosition;
+            tilesMatrix.Sort();
 
-            return resultMatrix;
+            return tilesMatrix;
         }
-        private static Tile DetermineFreeTile(List<Tile> resultMatrix)
-        {
-            Tile freeTile = new Tile();
 
-            foreach (Tile tile in resultMatrix)
+        private static Tile DetermineEmptyTile(List<Tile> tilesMatrix)
+        {
+            Tile emptyTile = new Tile();
+
+            foreach (Tile tile in tilesMatrix)
             {
                 if (tile.Label == string.Empty)
                 {
-                    freeTile = tile;
+                    emptyTile = tile;
                 }
             }
-            return freeTile;
+
+            return emptyTile;
         }
 
-        private static List<Tile> GenerateNeighbourTilesList(Tile freeTile, Tile tile, List<Tile> neighbourTiles)
+        private static List<Tile> GenerateNeighbourTilesList(Tile emptyTile, Tile currentTile, List<Tile> neighbourTiles)
         {
-            bool areValidNeighbourTiles = AreValidNeighbourTiles(freeTile, tile);
-            if (areValidNeighbourTiles)
+            bool areValidNeighbours = AreValidNeighbours(emptyTile, currentTile);
+            if (areValidNeighbours)
             {
-                neighbourTiles.Add(tile);
+                neighbourTiles.Add(currentTile);
             }
+
             return neighbourTiles;
         }
-        private static bool AreValidNeighbourTiles(Tile freeTile, Tile tile)
-        {
-            int tilesDistance = freeTile.Position - tile.Position;
-            int tilesAbsoluteDistance = Math.Abs(tilesDistance);
-            bool isValidHorizontalNeighbour =
-                ((tilesAbsoluteDistance == HORIZONTAL_NEIGHBOUR_TILE) && !(((tile.Position + 1) % MATRIX_SIZE == 1 && tilesDistance == -1) || ((tile.Position + 1) % MATRIX_SIZE == 0 && tilesDistance == 1)));
-            bool isValidVerticalNeighbour = (tilesAbsoluteDistance == VERTICAL_NEIGHBOUR_TILE);
-            bool validNeigbour = isValidHorizontalNeighbour || isValidVerticalNeighbour;
 
-            return validNeigbour;
+        private static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
+        {
+            int tilesDistance = emptyTile.Position - currentTile.Position;
+            int tilesAbsoluteDistance = Math.Abs(tilesDistance);
+            bool areValidHorizontalNeighbours =
+                ((tilesAbsoluteDistance == HorizontalNeighbourDistance) && !(((currentTile.Position + 1) % MatrixSize == 1 && tilesDistance == -1) || ((currentTile.Position + 1) % MatrixSize == 0 && tilesDistance == 1)));
+            bool areValidVerticalNeighbours = (tilesAbsoluteDistance == VerticalNeighbourDistance);
+            bool areValidNeigbours = areValidHorizontalNeighbours || areValidVerticalNeighbours;
+
+            return areValidNeigbours;
         }
     }
 }

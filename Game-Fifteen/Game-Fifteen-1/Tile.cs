@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GameFifteenProject
 {
-    class Tile : IComparable
+    public class Tile : IComparable
     {
-        private string label;
+        private readonly string label;
         private int position;
 
         public string Label
         {
-            get { return label; }
+            get { return this.label; }
         }
 
         public int Position
         {
-            get { return position; }
-            set { position = value; }
+            get { return this.position; }
+            set { this.position = value; }
         }
 
         public Tile(string label, int position)
@@ -33,8 +31,8 @@ namespace GameFifteenProject
 
         public int CompareTo(object tile)
         {
-            Tile currentTile = (Tile)tile;
-            int result = this.position.CompareTo(currentTile.Position);
+            Tile otherTile = (Tile)tile;
+            int result = this.Position.CompareTo(otherTile.Position);
 
             return result;
         }
