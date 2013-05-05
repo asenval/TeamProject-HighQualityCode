@@ -8,7 +8,12 @@ Finished Tasks
 5.Formatted the curly braces { and } according to the best practices for the C# language.-  Asen Valyovski
 6.Put { and } after all conditionals and loops (when missing).				-  Asen Valyovski
 
-
-Future Tasks
-
-1.Give propriate names for fields, properties, methods, classes and so on. 		- Krasimir Uzunov
+7.Appropriate names for fields, properties, methods, given. Renamed all constant fields, using PascalCase 
+instead of ALL_CAPS. All freeTile appearances in fields and methods renamed to emptyTile. tempTile fields,
+renamed to currentTile. tileName and tileValue fields renamed to tileLabel. resultMatrix field in ShuffleMatrix() 
+method, renamed to shuffledMatrix. isValidHorizontalNeighbour and isValidVerticalNeighbour renamed to 
+areValidHorizontalNeighbours and areValidVerticalNeighbours. switchedindexNumber field renamed to position. All 
+appearances of tiles in fields and methods renamed to tilesMatrix. cnt field renamed to movesCount. s field renamed
+to command. flag field renamed to isMatrixSolved. destinationTileValue field renamed to tileLabel. isSuccessfulParsing
+field renamed to isMovingCommand. rowCounter field renamed to currentColumn. currentElement renamed to currentTile. 
+tileLabelInt and parsedLabel fields renamed to currentTileLabel.  -  Krasimir Uzunov
