@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace GameFifteenProject
 {
+    /// <summary>
+    /// Class Player contains player data.
+    /// </summary>
     public class Player : IComparable
     {
         private readonly string name;
@@ -18,12 +21,22 @@ namespace GameFifteenProject
             get { return this.moves; }
         }
 
+        /// <summary>
+        /// Player constructor.
+        /// </summary>
+        /// <param name="name">Player name string</param>
+        /// <param name="moves">Player number of moves integer</param>
         public Player(string name, int moves)
         {
             this.name = name;
             this.moves = moves;
         }
 
+        /// <summary>
+        /// Player constructor.
+        /// </summary>
+        /// <param name="player">Player object</param>
+        /// <returns></returns>
         public int CompareTo(object player)
         {
             Player otherPlayer = (Player)player;
