@@ -15,7 +15,7 @@ namespace GameFifteenProject
         /// </summary>
         /// <param name="command">Player command string</param>
         /// <returns>Valid player command string</returns>
-        public static string CommandType(string command)
+        public static string IsCommandValid(string command)
         {
             string commandToLower = command.ToLower();
 

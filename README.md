@@ -17,3 +17,8 @@ appearances of tiles in fields and methods renamed to tilesMatrix. cnt field ren
 to command. flag field renamed to isMatrixSolved. destinationTileValue field renamed to tileLabel. isSuccessfulParsing
 field renamed to isMovingCommand. rowCounter field renamed to currentColumn. currentElement renamed to currentTile. 
 tileLabelInt and parsedLabel fields renamed to currentTileLabel.  -  Krasimir Uzunov
+
+8.Change method name CommandType to IsCommandValid.					- Asen Valyoski
+9.Refacrorigng PlayGameFifteen.cs. Remove ifs.						- Asen Valyoski
+
+

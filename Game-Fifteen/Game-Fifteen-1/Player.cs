@@ -32,6 +32,7 @@ namespace GameFifteenProject
             this.moves = moves;
         }
 
+        //TODO ne e vqrno da se opravi
         /// <summary>
         /// Player constructor.
         /// </summary>

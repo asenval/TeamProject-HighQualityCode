@@ -6,7 +6,7 @@ namespace GameFifteenProject
 {
     public class PlayGameFifteen
     {
-        private static void Menu()
+        static void Main()
         {
             List<Tile> tilesMatrix = new List<Tile>();
             int movesCount = 0;
@@ -21,9 +21,8 @@ namespace GameFifteenProject
                     {
                         case "restart":
                             {
-                                string welcomeMessage = "Welcome to the game “15”. Please try to arrange the numbers sequentially. ";
-                                welcomeMessage = welcomeMessage + "\nUse 'top' to view the top scoreboard, 'restart' to start a new game and 'exit'";
-                                welcomeMessage = welcomeMessage + " \nto quit the game.";
+                                string welcomeMessage = "Welcome to the game “15”. Please try to arrange the numbers sequentially." +
+                                    "\nUse 'top' to view the top scoreboard, 'restart' to start a new game and 'exit'\nto quit the game.";
                                 Console.WriteLine();
                                 Console.WriteLine(welcomeMessage);
                                 tilesMatrix = MatrixGenerator.GenerateMatrix();
@@ -38,39 +37,35 @@ namespace GameFifteenProject
                                 break;
                             }
                     }
-                    if (!isMatrixSolved)
+                    Console.Write("Enter a number to move: ");
+                    command = Console.ReadLine();
+
+                    int tileLabel;
+                    bool isMovingCommand = Int32.TryParse(command, out tileLabel);
+
+                    if (isMovingCommand)
                     {
-                        Console.Write("Enter a number to move: ");
-                        command = Console.ReadLine();
-
-                        int tileLabel;
-
-                        bool isMovingCommand = Int32.TryParse(command, out tileLabel);
-
-                        if (isMovingCommand)
+                        try
                         {
-                            try
-                            {
-                                Gameplay.MoveTiles(tilesMatrix, tileLabel);
-                                movesCount++;
-                                Gameplay.PrintMatrix(tilesMatrix);
-                                isMatrixSolved = Gameplay.IsMatrixSolved(tilesMatrix);
-                            }
-                            catch (Exception exception)
-                            {
-                                Console.WriteLine(exception.Message);
-                            }
+                            Gameplay.MoveTiles(tilesMatrix, tileLabel);
+                            movesCount++;
+                            Gameplay.PrintMatrix(tilesMatrix);
+                            isMatrixSolved = Gameplay.IsMatrixSolved(tilesMatrix);
                         }
-                        else
+                        catch (Exception exception)
                         {
-                            try
-                            {
-                                command = Command.CommandType(command);
-                            }
-                            catch (ArgumentException exception)
-                            {
-                                Console.WriteLine(exception.Message);
-                            }
+                            Console.WriteLine(exception.Message);
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            command = Command.IsCommandValid(command);
+                        }
+                        catch (ArgumentException exception)
+                        {
+                            Console.WriteLine(exception.Message);
                         }
                     }
                 }
@@ -94,11 +89,6 @@ namespace GameFifteenProject
                     movesCount = 0;
                 }
             }
-        }
-
-        static void Main()
-        {
-            Menu();
         }
     }
 }
