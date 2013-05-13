@@ -13,6 +13,10 @@ namespace GameFifteenProject
         private const int MaximumMoves = 50;
         private static Random random;
 
+        /// <summary>
+        /// Generate a new Matrix
+        /// </summary>
+        /// <returns>Returns the matrix</returns>
         public static List<Tile> GenerateMatrix()
         {
             List<Tile> tilesMatrix = new List<Tile>();
@@ -31,6 +35,11 @@ namespace GameFifteenProject
             return tilesMatrix;
         }
 
+        /// <summary>
+        /// Shuffles the tiles in a matrix
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix that is going to be shuffeled</param>
+        /// <returns>Returns the matrix with shuffled tiles</returns>
         public static List<Tile> ShuffleMatrix(List<Tile> tilesMatrix)
         {
             random = new Random();
@@ -45,6 +54,11 @@ namespace GameFifteenProject
             return shuffledMatrix;
         }
 
+        /// <summary>
+        /// Moves the empty tile of a matrix
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix in which the empty tile is going to be moved</param>
+        /// <returns>Returns the matrix with moved empty tile</returns>
         private static List<Tile> MoveEmptyTile(List<Tile> tilesMatrix)
         {
             Tile emptyTile = DetermineEmptyTile(tilesMatrix);
@@ -67,6 +81,11 @@ namespace GameFifteenProject
             return tilesMatrix;
         }
 
+        /// <summary>
+        /// Gets the empty tile in a matrix
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix in which the empty tile is searched</param>
+        /// <returns>Returns the empty tile of the matrix</returns>
         private static Tile DetermineEmptyTile(List<Tile> tilesMatrix)
         {
             Tile emptyTile = new Tile();
@@ -82,6 +101,13 @@ namespace GameFifteenProject
             return emptyTile;
         }
 
+        /// <summary>
+        /// Generate list of all neighbours of the empty tile in a matrix
+        /// </summary>
+        /// <param name="emptyTile">The empty tile in the matrix</param>
+        /// <param name="currentTile">The tile that is checked if it is valid naighbour</param>
+        /// <param name="neighbourTiles">List of all neighbours of the empty tile in the matrix</param>
+        /// <returns>Returns list of all neighbours of the empty tile in the matrix</returns>
         private static List<Tile> GenerateNeighbourTilesList(Tile emptyTile, Tile currentTile, List<Tile> neighbourTiles)
         {
             bool areValidNeighbours = AreValidNeighbours(emptyTile, currentTile);
@@ -93,6 +119,12 @@ namespace GameFifteenProject
             return neighbourTiles;
         }
 
+        /// <summary>
+        /// Check if two tiles are valid neighbours
+        /// </summary>
+        /// <param name="emptyTile">The empty tile in the matrix</param>
+        /// <param name="currentTile">The tile that is checked if it is valid naighbour</param>
+        /// <returns>Returns boolean value</returns>
         private static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
         {
             int tilesDistance = emptyTile.Position - currentTile.Position;

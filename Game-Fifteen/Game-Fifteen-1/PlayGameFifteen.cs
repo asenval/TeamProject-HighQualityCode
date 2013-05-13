@@ -10,14 +10,14 @@ namespace GameFifteenProject
         {
             List<Tile> tilesMatrix = new List<Tile>();
             int movesCount = 0;
-            string command = "restart";
+            string currentCommand = "restart";
             bool isMatrixSolved = false;
-
-            while (command != "exit")
+            
+            while (currentCommand != "exit")
             {
                 if (!isMatrixSolved)
                 {
-                    switch (command)
+                    switch (currentCommand)
                     {
                         case "restart":
                             {
@@ -38,10 +38,10 @@ namespace GameFifteenProject
                             }
                     }
                     Console.Write("Enter a number to move: ");
-                    command = Console.ReadLine();
+                    currentCommand = Console.ReadLine();
 
                     int tileLabel;
-                    bool isMovingCommand = Int32.TryParse(command, out tileLabel);
+                    bool isMovingCommand = Int32.TryParse(currentCommand, out tileLabel);
 
                     if (isMovingCommand)
                     {
@@ -61,7 +61,7 @@ namespace GameFifteenProject
                     {
                         try
                         {
-                            command = Command.IsCommandValid(command);
+                            currentCommand = Command.IsCommandValid(currentCommand);
                         }
                         catch (ArgumentException exception)
                         {
@@ -82,9 +82,10 @@ namespace GameFifteenProject
                         string playerName = Console.ReadLine();
                         Player player = new Player(playerName, movesCount);
                         Scoreboard.AddPlayer(player);
+                        Scoreboard.DeleteAllExceptTopFivePlayers();
                         Scoreboard.PrintScoreboard();
                     }
-                    command = "restart";
+                    currentCommand = "restart";
                     isMatrixSolved = false;
                     movesCount = 0;
                 }

@@ -10,6 +10,10 @@ namespace GameFifteenProject
         private const int VerticalNeighbourDistance = 4;
         private const int MatrixSize = 4;
 
+        /// <summary>
+        /// Print a matrix to the console 
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix that is going to be printed</param>
         public static void PrintMatrix(List<Tile> tilesMatrix)
         {
             Console.WriteLine("  ------------");
@@ -48,6 +52,12 @@ namespace GameFifteenProject
             Console.WriteLine("  ------------");
         }
 
+        /// <summary>
+        /// Move tile to an empty position if such exists next to it 
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix in which the tile is moved</param>
+        /// <param name="tileLabel">The tile that is going to be moved</param>
+        /// <returns>Returns the new matrix</returns>
         public static List<Tile> MoveTiles(List<Tile> tilesMatrix, int tileLabel)
         {
             if (tileLabel < 0 || tileLabel > 15)
@@ -56,10 +66,12 @@ namespace GameFifteenProject
             }
 
             List<Tile> newMatrix = tilesMatrix;
-            Tile emptyTile = tilesMatrix[GetEmptyTilePosition(tilesMatrix)];
-            Tile targetTile = tilesMatrix[GetDestinationTilePosition(tilesMatrix, tileLabel)];
+            int emptyTilePosition = GetEmptyTilePosition(newMatrix);
+            Tile emptyTile = tilesMatrix[emptyTilePosition];
+            int targerTilePosition = GetDestinationTilePosition(newMatrix, tileLabel);
+            Tile targetTile = tilesMatrix[targerTilePosition];
 
-            bool areValidNeighbours = TilePositionValidation(tilesMatrix, emptyTile, targetTile);
+            bool areValidNeighbours = AreValidNeighbours(emptyTile, targetTile);
 
             if (areValidNeighbours)
             {
@@ -76,6 +88,11 @@ namespace GameFifteenProject
             return newMatrix;
         }
 
+        /// <summary>
+        /// Checks if the matrix is solved
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix that is checked</param>
+        /// <returns>Returns a boolean value</returns>
         public static bool IsMatrixSolved(List<Tile> tilesMatrix)
         {
             int count = 0;
@@ -99,6 +116,12 @@ namespace GameFifteenProject
             }
         }
 
+        /// <summary>
+        /// Gets the position of the tile that is going to be moved
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix in which the tile is going to be moved</param>
+        /// <param name="tileLabel">The tile that is going to be moved</param>
+        /// <returns>Returns the position of the tile that is going to be moved</returns>
         private static int GetDestinationTilePosition(List<Tile> tilesMatrix, int tileLabel)
         {
             int tilePosition = 0;
@@ -115,13 +138,12 @@ namespace GameFifteenProject
             return tilePosition;
         }
 
-        private static bool TilePositionValidation(List<Tile> tiles, Tile emptyTile, Tile currentTile)
-        {
-            bool areValidNeighbours = AreValidNeighbours(emptyTile, currentTile);
-
-            return areValidNeighbours;
-        }
-
+        /// <summary>
+        /// Checks if a tile can be moved to another position
+        /// </summary>
+        /// <param name="emptyTile">The empty tile in the matrix</param>
+        /// <param name="currentTile">The tile that is going to be moved</param>
+        /// <returns>Returns a boolean value</returns>
         private static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
         {
             int tilesDistance = emptyTile.Position - currentTile.Position;
@@ -134,6 +156,11 @@ namespace GameFifteenProject
             return areValidNeigbours;
         }
 
+        /// <summary>
+        /// Gets the position of the empty tile in a matrix
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix in which the empty tile position is searched</param>
+        /// <returns>Returns the position of the empty tile</returns>
         private static int GetEmptyTilePosition(List<Tile> tilesMatrix)
         {
             int emptyTilePosition = 0;

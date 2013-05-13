@@ -4,7 +4,7 @@ using System.Linq;
 namespace GameFifteenProject
 {
     /// <summary>
-    /// Class Player contains player data.
+    /// Contains player name and moves
     /// </summary>
     public class Player : IComparable
     {
@@ -22,22 +22,21 @@ namespace GameFifteenProject
         }
 
         /// <summary>
-        /// Player constructor.
+        /// Player constructor
         /// </summary>
-        /// <param name="name">Player name string</param>
-        /// <param name="moves">Player number of moves integer</param>
+        /// <param name="name">Player name represented as a string</param>
+        /// <param name="moves">Player number of moves represented as an integer</param>
         public Player(string name, int moves)
         {
             this.name = name;
             this.moves = moves;
         }
 
-        //TODO ne e vqrno da se opravi
         /// <summary>
-        /// Player constructor.
+        /// Compares two players by number of their moves
         /// </summary>
         /// <param name="player">Player object</param>
-        /// <returns></returns>
+        /// <returns>The result of comparing the players</returns>
         public int CompareTo(object player)
         {
             Player otherPlayer = (Player)player;

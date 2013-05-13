@@ -4,30 +4,31 @@ using System.Linq;
 namespace GameFifteenProject
 {
     /// <summary>
-    /// Class Command contains and validate player console commands.
+    /// Contains and validate player console commands
     /// </summary>
     public static class Command
     {
-        private enum Commands { restart, top, exit };
+        private enum Commands { Restart, Top, Exit };
 
         /// <summary>
-        /// Validate player command.
+        /// Validate player command
         /// </summary>
-        /// <param name="command">Player command string</param>
-        /// <returns>Valid player command string</returns>
+        /// <param name="command">Player command represented as a string</param>
+        /// <returns>Valid player command represented as a string</returns>
         public static string IsCommandValid(string command)
         {
             string commandToLower = command.ToLower();
 
-            if (commandToLower == Commands.exit.ToString() ||
-                commandToLower == Commands.restart.ToString() || 
-                commandToLower == Commands.top.ToString())
+            switch (commandToLower)
             {
-                return commandToLower;
-            }
-            else
-            {
-                throw new ArgumentException("Invalid Command!");
+                case "restart":
+                    return Commands.Restart.ToString().ToLower();
+                case "top":
+                    return Commands.Top.ToString().ToLower();
+                case "exit":
+                    return Commands.Exit.ToString().ToLower();
+                default:
+                    throw new ArgumentException("Invalid Command!");
             }
         }
 
