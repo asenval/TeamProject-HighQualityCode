@@ -6,9 +6,9 @@ namespace GameFifteenProject
 {
     public static class MatrixGenerator
     {
-        private const int HorizontalNeighbourDistance = 1;
-        private const int VerticalNeighbourDistance = 4;
         private const int MatrixSize = 4;
+        private const int HorizontalNeighbourDistance = 1;
+        private const int VerticalNeighbourDistance = MatrixSize;
         private const int MinimumMoves = 20;
         private const int MaximumMoves = 50;
         private static Random random;
@@ -61,13 +61,17 @@ namespace GameFifteenProject
         /// <returns>Returns the matrix with moved empty tile</returns>
         private static List<Tile> MoveEmptyTile(List<Tile> tilesMatrix)
         {
-            Tile emptyTile = DetermineEmptyTile(tilesMatrix);
+            Tile emptyTile = GetEmptyTile(tilesMatrix);
 
             List<Tile> neighbourTiles = new List<Tile>();
 
             foreach (Tile tile in tilesMatrix)
             {
-                neighbourTiles = GenerateNeighbourTilesList(emptyTile, tile, neighbourTiles);
+                bool areValidNeighbours = AreValidNeighbours(emptyTile, tile);
+                if (areValidNeighbours)
+                {
+                    neighbourTiles.Add(tile);
+                }
             }
 
             int position = random.Next() % (neighbourTiles.Count());
@@ -86,39 +90,19 @@ namespace GameFifteenProject
         /// </summary>
         /// <param name="tilesMatrix">The matrix in which the empty tile is searched</param>
         /// <returns>Returns the empty tile of the matrix</returns>
-        private static Tile DetermineEmptyTile(List<Tile> tilesMatrix)
+        private static Tile GetEmptyTile(List<Tile> tilesMatrix)
         {
-            Tile emptyTile = new Tile();
-
             foreach (Tile tile in tilesMatrix)
             {
                 if (tile.Label == string.Empty)
                 {
-                    emptyTile = tile;
+                    return tile;
                 }
             }
 
-            return emptyTile;
+            throw new ArgumentNullException("EmptyTile is missing.");
         }
-
-        /// <summary>
-        /// Generate list of all neighbours of the empty tile in a matrix
-        /// </summary>
-        /// <param name="emptyTile">The empty tile in the matrix</param>
-        /// <param name="currentTile">The tile that is checked if it is valid naighbour</param>
-        /// <param name="neighbourTiles">List of all neighbours of the empty tile in the matrix</param>
-        /// <returns>Returns list of all neighbours of the empty tile in the matrix</returns>
-        private static List<Tile> GenerateNeighbourTilesList(Tile emptyTile, Tile currentTile, List<Tile> neighbourTiles)
-        {
-            bool areValidNeighbours = AreValidNeighbours(emptyTile, currentTile);
-            if (areValidNeighbours)
-            {
-                neighbourTiles.Add(currentTile);
-            }
-
-            return neighbourTiles;
-        }
-
+        
         /// <summary>
         /// Check if two tiles are valid neighbours
         /// </summary>
@@ -129,8 +113,15 @@ namespace GameFifteenProject
         {
             int tilesDistance = emptyTile.Position - currentTile.Position;
             int tilesAbsoluteDistance = Math.Abs(tilesDistance);
-            bool areValidHorizontalNeighbours =
-                ((tilesAbsoluteDistance == HorizontalNeighbourDistance) && !(((currentTile.Position + 1) % MatrixSize == 1 && tilesDistance == -1) || ((currentTile.Position + 1) % MatrixSize == 0 && tilesDistance == 1)));
+            bool areValidHorizontalNeighbours = false;
+            if (tilesAbsoluteDistance == HorizontalNeighbourDistance)
+            {
+                areValidHorizontalNeighbours = true;
+                if (((currentTile.Position + 1) % MatrixSize == 1 && tilesDistance == -1) || ((currentTile.Position + 1) % MatrixSize == 0 && tilesDistance == 1))
+                {
+                    areValidHorizontalNeighbours = false;
+                }
+            }
             bool areValidVerticalNeighbours = (tilesAbsoluteDistance == VerticalNeighbourDistance);
             bool areValidNeigbours = areValidHorizontalNeighbours || areValidVerticalNeighbours;
 

@@ -99,10 +99,13 @@ namespace GameFifteenProject
             foreach (Tile tile in tilesMatrix)
             {
                 int currentTileLabel = 0;
-                Int32.TryParse(tile.Label, out currentTileLabel);
-                if (currentTileLabel == (tile.Position + 1))
+
+                if (int.TryParse(tile.Label, out currentTileLabel))
                 {
-                    count++;
+                    if (currentTileLabel == (tile.Position + 1))
+                    {
+                        count++;
+                    }
                 }
             }
 

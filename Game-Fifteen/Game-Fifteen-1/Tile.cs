@@ -34,13 +34,6 @@ namespace GameFifteenProject
         }
 
         /// <summary>
-        /// Tile constructor
-        /// </summary>
-        public Tile()
-        {
-        }
-
-        /// <summary>
         /// Compares two tiles by their position
         /// </summary>
         /// <param name="tile">Tile object</param>

@@ -30,7 +30,7 @@ namespace GameFifteenProject
             Console.WriteLine("Scoreboard:");
             foreach (Player player in players)
             {
-                string scoreboardLine = (players.IndexOf(player) + 1).ToString() + ". " + player.Name + " --> " + player.Moves.ToString() + " moves";
+                string scoreboardLine = string.Format("{0}. {1} --> {2} moves", players.IndexOf(player) + 1, player.Name, player.Moves);
                 Console.WriteLine(scoreboardLine);
             }
         }

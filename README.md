@@ -20,5 +20,9 @@ tileLabelInt and parsedLabel fields renamed to currentTileLabel.  -  Krasimir Uz
 
 8.Change method name CommandType to IsCommandValid.					- Asen Valyoski
 9.Refacrorigng PlayGameFifteen.cs. Remove ifs.						- Asen Valyoski
-
+10.scoreboardLine is change + concatenate of string to string.Format			- Asen Valyoski
+11. Remove Empty Tile constructor and correct DetermineEmptyTile and change it to GetEmptyTile
+12. Remove GenerateNeighbourTilesList - it is unneeded.
+13. Refacturing AreValidNeighbours method.
+14. IsMatrixSolved code formating.
 
