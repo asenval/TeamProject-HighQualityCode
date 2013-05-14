@@ -59,13 +59,10 @@ namespace GameFifteenProject
                     }
                     else
                     {
-                        try
+                        currentCommand = currentCommand.ToLower();
+                        if (!Enum.GetNames(typeof(Command)).Any(x => x.ToLower().Equals(currentCommand)))
                         {
-                            currentCommand = Command.IsCommandValid(currentCommand);
-                        }
-                        catch (ArgumentException exception)
-                        {
-                            Console.WriteLine(exception.Message);
+                            Console.WriteLine("Invalid command");
                         }
                     }
                 }

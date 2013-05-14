@@ -6,7 +6,7 @@ namespace GameFifteenProject
     [TestClass]
     public class CommandTest
     {
-        [TestMethod]
+        /*[TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestIsCommandValidEmptyString()
         {
@@ -39,6 +39,6 @@ namespace GameFifteenProject
         {
             string result = Command.IsCommandValid("Exit");
             Assert.AreEqual(result, "exit");
-        }
+        }*/
     }
 }
