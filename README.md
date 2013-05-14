@@ -29,5 +29,7 @@ tileLabelInt and parsedLabel fields renamed to currentTileLabel.  			-  Krasimir
 16. Change MoveTiles method logic.
 17. Remove class Command and change method isValidCommand to one enumeration checking for validate it - - Asen Valyoski
 
+18.XML Documentation in classes Tile, Scoreboard, PlayGameFifteen, MatrixGenerator, Gameplay added. 
+TilePositionValidation method removed. Enum members renamed from camelCase to PascalCase.
 
 
