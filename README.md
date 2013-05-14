@@ -32,4 +32,5 @@ tileLabelInt and parsedLabel fields renamed to currentTileLabel.  			-  Krasimir
 18.XML Documentation in classes Tile, Scoreboard, PlayGameFifteen, MatrixGenerator, Gameplay added. 
 TilePositionValidation method removed. Enum members renamed from camelCase to PascalCase.
 
+19. Unit Tests for classes Scoreboard and Tile added. - Krasimir Uzunov
 
