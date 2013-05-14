@@ -16,13 +16,15 @@ areValidHorizontalNeighbours and areValidVerticalNeighbours. switchedindexNumber
 appearances of tiles in fields and methods renamed to tilesMatrix. cnt field renamed to movesCount. s field renamed
 to command. flag field renamed to isMatrixSolved. destinationTileValue field renamed to tileLabel. isSuccessfulParsing
 field renamed to isMovingCommand. rowCounter field renamed to currentColumn. currentElement renamed to currentTile. 
-tileLabelInt and parsedLabel fields renamed to currentTileLabel.  -  Krasimir Uzunov
+tileLabelInt and parsedLabel fields renamed to currentTileLabel.  			-  Krasimir Uzunov
 
 8.Change method name CommandType to IsCommandValid.					- Asen Valyoski
 9.Refacrorigng PlayGameFifteen.cs. Remove ifs.						- Asen Valyoski
 10.scoreboardLine is change + concatenate of string to string.Format			- Asen Valyoski
-11. Remove Empty Tile constructor and correct DetermineEmptyTile and change it to GetEmptyTile
-12. Remove GenerateNeighbourTilesList - it is unneeded.
-13. Refacturing AreValidNeighbours method.
-14. IsMatrixSolved code formating.
+11. Remove Empty Tile constructor and correct DetermineEmptyTile and change it to GetEmptyTile - Asen Valyoski
+12. Remove GenerateNeighbourTilesList - it is unneeded.					- Asen Valyoski
+13. Refacturing AreValidNeighbours method.						- Asen Valyoski
+14. IsMatrixSolved code formating.							- Asen Valyoski
+15. Remove dublicated method AreValidNeighbours().					- Asen Valyoski
+16. Change MoveTiles method logic.
 

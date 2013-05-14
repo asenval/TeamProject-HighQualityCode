@@ -41,7 +41,7 @@ namespace GameFifteenProject
                     currentCommand = Console.ReadLine();
 
                     int tileLabel;
-                    bool isMovingCommand = Int32.TryParse(currentCommand, out tileLabel);
+                    bool isMovingCommand = int.TryParse(currentCommand, out tileLabel);
 
                     if (isMovingCommand)
                     {

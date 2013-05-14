@@ -84,13 +84,13 @@ namespace GameFifteenProject
 
             return tilesMatrix;
         }
-
+        
         /// <summary>
         /// Gets the empty tile in a matrix
         /// </summary>
         /// <param name="tilesMatrix">The matrix in which the empty tile is searched</param>
         /// <returns>Returns the empty tile of the matrix</returns>
-        private static Tile GetEmptyTile(List<Tile> tilesMatrix)
+        public static Tile GetEmptyTile(List<Tile> tilesMatrix)
         {
             foreach (Tile tile in tilesMatrix)
             {
@@ -109,7 +109,7 @@ namespace GameFifteenProject
         /// <param name="emptyTile">The empty tile in the matrix</param>
         /// <param name="currentTile">The tile that is checked if it is valid naighbour</param>
         /// <returns>Returns boolean value</returns>
-        private static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
+        public static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
         {
             int tilesDistance = emptyTile.Position - currentTile.Position;
             int tilesAbsoluteDistance = Math.Abs(tilesDistance);

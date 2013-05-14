@@ -27,7 +27,7 @@ namespace GameFifteenProject
                 {
                     Console.Write("   ");
                 }
-                else if (Int32.Parse(currentTile.Label) < 10)
+                else if (int.Parse(currentTile.Label) < 10)
                 {
                     Console.Write(' ' + currentTile.Label + ' ');
                 }
@@ -66,12 +66,10 @@ namespace GameFifteenProject
             }
 
             List<Tile> newMatrix = tilesMatrix;
-            int emptyTilePosition = GetEmptyTilePosition(newMatrix);
-            Tile emptyTile = tilesMatrix[emptyTilePosition];
-            int targerTilePosition = GetDestinationTilePosition(newMatrix, tileLabel);
-            Tile targetTile = tilesMatrix[targerTilePosition];
+            Tile emptyTile = MatrixGenerator.GetEmptyTile(newMatrix);
+            Tile targetTile = GetDestinationTile(newMatrix, tileLabel);
 
-            bool areValidNeighbours = AreValidNeighbours(emptyTile, targetTile);
+            bool areValidNeighbours = MatrixGenerator.AreValidNeighbours(emptyTile, targetTile);
 
             if (areValidNeighbours)
             {
@@ -125,58 +123,19 @@ namespace GameFifteenProject
         /// <param name="tilesMatrix">The matrix in which the tile is going to be moved</param>
         /// <param name="tileLabel">The tile that is going to be moved</param>
         /// <returns>Returns the position of the tile that is going to be moved</returns>
-        private static int GetDestinationTilePosition(List<Tile> tilesMatrix, int tileLabel)
+        private static Tile GetDestinationTile(List<Tile> tilesMatrix, int tileLabel)
         {
-            int tilePosition = 0;
             for (int index = 0; index < tilesMatrix.Count; index++)
             {
                 int currentTileLabel = 0;
-                bool successfulParsing = Int32.TryParse(tilesMatrix[index].Label, out currentTileLabel);
+                bool successfulParsing = int.TryParse(tilesMatrix[index].Label, out currentTileLabel);
                 if (successfulParsing && tileLabel == currentTileLabel)
                 {
-                    tilePosition = index;
+                    return tilesMatrix[index];
                 }
             }
 
-            return tilePosition;
-        }
-
-        /// <summary>
-        /// Checks if a tile can be moved to another position
-        /// </summary>
-        /// <param name="emptyTile">The empty tile in the matrix</param>
-        /// <param name="currentTile">The tile that is going to be moved</param>
-        /// <returns>Returns a boolean value</returns>
-        private static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
-        {
-            int tilesDistance = emptyTile.Position - currentTile.Position;
-            int tilesAbsoluteDistance = Math.Abs(tilesDistance);
-            bool areValidHorizontalNeighbours =
-                (tilesAbsoluteDistance == HorizontalNeighbourDistance && !(((currentTile.Position + 1) % MatrixSize == 1 && tilesDistance == -1) || ((currentTile.Position + 1) % MatrixSize == 0 && tilesDistance == 1)));
-            bool areValidVerticalNeighbours = (tilesAbsoluteDistance == VerticalNeighbourDistance);
-            bool areValidNeigbours = areValidHorizontalNeighbours || areValidVerticalNeighbours;
-
-            return areValidNeigbours;
-        }
-
-        /// <summary>
-        /// Gets the position of the empty tile in a matrix
-        /// </summary>
-        /// <param name="tilesMatrix">The matrix in which the empty tile position is searched</param>
-        /// <returns>Returns the position of the empty tile</returns>
-        private static int GetEmptyTilePosition(List<Tile> tilesMatrix)
-        {
-            int emptyTilePosition = 0;
-            for (int index = 0; index < tilesMatrix.Count; index++)
-            {
-                if (tilesMatrix[index].Label == String.Empty)
-                {
-                    emptyTilePosition = index;
-                    break;
-                }
-            }
-
-            return emptyTilePosition;
+            throw new ArgumentException("There is no tile with this tileLabel.");
         }
     }
 }

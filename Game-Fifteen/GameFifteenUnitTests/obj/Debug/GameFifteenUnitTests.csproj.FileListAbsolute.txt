@@ -5,3 +5,10 @@ D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\bin
 D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.csprojResolveAssemblyReference.cache
 D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.dll
 D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.pdb
+D:\Telerik kurs\TeamProjects\Team project - high quality code\Game-Fifteen\GameFifteenUnitTests\bin\Debug\GameFifteenUnitTests.dll
+D:\Telerik kurs\TeamProjects\Team project - high quality code\Game-Fifteen\GameFifteenUnitTests\bin\Debug\GameFifteenUnitTests.pdb
+D:\Telerik kurs\TeamProjects\Team project - high quality code\Game-Fifteen\GameFifteenUnitTests\bin\Debug\ConsoleApplication1.exe
+D:\Telerik kurs\TeamProjects\Team project - high quality code\Game-Fifteen\GameFifteenUnitTests\bin\Debug\ConsoleApplication1.pdb
+D:\Telerik kurs\TeamProjects\Team project - high quality code\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.csprojResolveAssemblyReference.cache
+D:\Telerik kurs\TeamProjects\Team project - high quality code\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.dll
+D:\Telerik kurs\TeamProjects\Team project - high quality code\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.pdb
