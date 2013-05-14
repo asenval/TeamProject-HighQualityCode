@@ -28,6 +28,16 @@ namespace GameFifteenProject
         /// <param name="moves">Player number of moves represented as an integer</param>
         public Player(string name, int moves)
         {
+            if (name == "" || name == null)
+            {
+                throw new ArgumentException("Player name is required!");
+            }
+
+            if (moves < 0)
+            {
+                throw new ArgumentException("Player moves can't be negative number!");
+            }
+
             this.name = name;
             this.moves = moves;
         }
