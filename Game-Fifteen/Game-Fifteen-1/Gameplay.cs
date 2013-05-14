@@ -53,7 +53,7 @@ namespace GameFifteenProject
         }
 
         /// <summary>
-        /// Move tile to an empty position if such exists next to it 
+        /// Moves a tile to an empty position if such exists next to it 
         /// </summary>
         /// <param name="tilesMatrix">The matrix in which the tile is moved</param>
         /// <param name="tileLabel">The tile that is going to be moved</param>
@@ -118,11 +118,11 @@ namespace GameFifteenProject
         }
 
         /// <summary>
-        /// Gets the position of the tile that is going to be moved
+        /// Gets the tile that is going to be moved
         /// </summary>
         /// <param name="tilesMatrix">The matrix in which the tile is going to be moved</param>
         /// <param name="tileLabel">The tile that is going to be moved</param>
-        /// <returns>Returns the position of the tile that is going to be moved</returns>
+        /// <returns>Returns the tile that is going to be moved</returns>
         private static Tile GetDestinationTile(List<Tile> tilesMatrix, int tileLabel)
         {
             for (int index = 0; index < tilesMatrix.Count; index++)

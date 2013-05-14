@@ -45,7 +45,16 @@ namespace GameFifteenProject
                 if (index > 4)
                 {
                     players.Remove(players[index]);
+                    index--;
                 }
+            }
+        }
+
+        public static int Count
+        {
+            get
+            {
+                return players.Count;
             }
         }
     }
