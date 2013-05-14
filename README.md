@@ -27,4 +27,7 @@ tileLabelInt and parsedLabel fields renamed to currentTileLabel.  			-  Krasimir
 14. IsMatrixSolved code formating.							- Asen Valyoski
 15. Remove dublicated method AreValidNeighbours().					- Asen Valyoski
 16. Change MoveTiles method logic.
+17. Remove class Command and change method isValidCommand to one enumeration checking for validate it - - Asen Valyoski
+
+
 
