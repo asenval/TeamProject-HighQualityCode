@@ -1,0 +1,5 @@
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\Game-Fifteen-1\bin\Debug\ConsoleApplication1.exe
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\Game-Fifteen-1\bin\Debug\ConsoleApplication1.pdb
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\Game-Fifteen-1\obj\x86\Debug\GameFifeteen.csprojResolveAssemblyReference.cache
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\Game-Fifteen-1\obj\x86\Debug\ConsoleApplication1.exe
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\Game-Fifteen-1\obj\x86\Debug\ConsoleApplication1.pdb

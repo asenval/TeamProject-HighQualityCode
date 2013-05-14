@@ -1,0 +1,7 @@
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\bin\Debug\GameFifteenUnitTests.dll
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\bin\Debug\GameFifteenUnitTests.pdb
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\bin\Debug\ConsoleApplication1.exe
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\bin\Debug\ConsoleApplication1.pdb
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.csprojResolveAssemblyReference.cache
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.dll
+D:\GitProjects\TeamProject-HighQualityCode\Game-Fifteen\GameFifteenUnitTests\obj\Debug\GameFifteenUnitTests.pdb
