@@ -33,5 +33,29 @@ namespace GameFifteenProject
             Player gamer = new Player("Ivan", 5);
             Assert.AreEqual(gamer.Moves, 5);
         }
+
+        [TestMethod]
+        public void ComparePlayerEqual()
+        {
+            Player gamer = new Player("Ivan", 5);
+            Player gamer2 = new Player("Dancho", 5);
+            Assert.AreEqual(0, gamer.CompareTo(gamer2));
+        }
+
+        [TestMethod]
+        public void ComparePlayerDiferentSmaller()
+        {
+            Player gamer = new Player("Ivan", 5);
+            Player gamer2 = new Player("Dancho", 6);
+            Assert.AreEqual(-1, gamer.CompareTo(gamer2));
+        }
+
+        [TestMethod]
+        public void ComparePlayerDiferentBiger()
+        {
+            Player gamer = new Player("Ivan", 6);
+            Player gamer2 = new Player("Dancho", 5);
+            Assert.AreEqual(1, gamer.CompareTo(gamer2));
+        }
     }
 }
