@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Contains player name and moves
     /// </summary>
@@ -28,7 +28,7 @@ namespace GameFifteenProject
         /// <param name="moves">Player number of moves represented as an integer</param>
         public Player(string name, int moves)
         {
-            if (name == "" || name == null)
+            if (name == string.Empty || name == null)
             {
                 throw new ArgumentException("Player name is required!");
             }

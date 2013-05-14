@@ -1,9 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// Gameplay class contains gameplay logic
+    /// </summary>
     public static class Gameplay
     {
         private const int HorizontalNeighbourDistance = 1;
@@ -23,7 +26,7 @@ namespace GameFifteenProject
             {
                 Tile currentTile = tilesMatrix.ElementAt(index);
 
-                if (currentTile.Label == String.Empty)
+                if (currentTile.Label == string.Empty)
                 {
                     Console.Write("   ");
                 }
@@ -45,6 +48,7 @@ namespace GameFifteenProject
                     {
                         Console.Write("| ");
                     }
+
                     currentColumn = 0;
                 }
             }

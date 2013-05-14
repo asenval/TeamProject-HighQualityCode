@@ -1,15 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Contains a list of players
     /// </summary>
     public static class Scoreboard
     {
         private static readonly List<Player> players = new List<Player>();
+
+        public static int Count
+        {
+            get
+            {
+                return players.Count;
+            }
+        }
 
         /// <summary>
         /// Add player to a list of players and sort the list
@@ -47,14 +55,6 @@ namespace GameFifteenProject
                     players.Remove(players[index]);
                     index--;
                 }
-            }
-        }
-
-        public static int Count
-        {
-            get
-            {
-                return players.Count;
             }
         }
     }

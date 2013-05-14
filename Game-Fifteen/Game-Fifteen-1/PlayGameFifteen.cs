@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class PlayGameFifteen
     {
-        static void Main()
+        public static void Main()
         {
             List<Tile> tilesMatrix = new List<Tile>();
             int movesCount = 0;
@@ -31,11 +31,13 @@ namespace GameFifteenProject
                                 Gameplay.PrintMatrix(tilesMatrix);
                                 break;
                             }
+
                         case "top":
                             {
                                 Scoreboard.PrintScoreboard();
                                 break;
                             }
+
                     }
                     Console.Write("Enter a number to move: ");
                     currentCommand = Console.ReadLine();

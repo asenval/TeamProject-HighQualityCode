@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Contains and validate player console commands
     /// </summary>
@@ -11,6 +11,5 @@ namespace GameFifteenProject
         Restart, 
         Top, 
         Exit
-    };
-
+    }
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Contains tile label and position
     /// </summary>

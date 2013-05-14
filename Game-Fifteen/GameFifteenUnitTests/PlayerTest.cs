@@ -1,8 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class PlayerTest
     {
@@ -17,7 +17,7 @@ namespace GameFifteenProject
         [ExpectedException(typeof(ArgumentException))]
         public void CreatePlayerEmptyName()
         {
-            Player gamer = new Player("", 5);
+            Player gamer = new Player(string.Empty, 5);
         }
 
         [TestMethod]

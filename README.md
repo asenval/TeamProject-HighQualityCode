@@ -34,3 +34,9 @@ TilePositionValidation method removed. Enum members renamed from camelCase to Pa
 
 19. Unit Tests for classes Scoreboard and Tile added. - Krasimir Uzunov
 
+20.XML Documentation in classes Player, Scoreboard and Command.			-- Georgi Rusev
+21.Adding Refracturing documentation.			-- Georgi Rusev
+22.Create GameFifteenUnitTests and adding unit tests  CommandTest			-- Georgi Rusev
+23.Adding unit test PlayerTest. 			-- Georgi Rusev
+24.Updating Readme.md			-- Georgi Rusev
+

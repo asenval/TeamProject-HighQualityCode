@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class MatrixGenerator
     {
         private const int MatrixSize = 4;
@@ -23,7 +23,7 @@ namespace GameFifteenProject
 
             for (int tilePosition = 0; tilePosition < 15; tilePosition++)
             {
-                String tileLabel = (tilePosition + 1).ToString();
+                string tileLabel = (tilePosition + 1).ToString();
 
                 Tile currentTile = new Tile(tileLabel, tilePosition);
                 tilesMatrix.Add(currentTile);
@@ -38,7 +38,7 @@ namespace GameFifteenProject
         /// <summary>
         /// Shuffles the tiles in a matrix
         /// </summary>
-        /// <param name="tilesMatrix">The matrix that is going to be shuffeled</param>
+        /// <param name="tilesMatrix">The matrix that is going to be shuffle</param>
         /// <returns>Returns the matrix with shuffled tiles</returns>
         public static List<Tile> ShuffleMatrix(List<Tile> tilesMatrix)
         {
@@ -52,6 +52,50 @@ namespace GameFifteenProject
             }
 
             return shuffledMatrix;
+        }
+
+        /// <summary>
+        /// Gets the empty tile in a matrix
+        /// </summary>
+        /// <param name="tilesMatrix">The matrix in which the empty tile is searched</param>
+        /// <returns>Returns the empty tile of the matrix</returns>
+        public static Tile GetEmptyTile(List<Tile> tilesMatrix)
+        {
+            foreach (Tile tile in tilesMatrix)
+            {
+                if (tile.Label == string.Empty)
+                {
+                    return tile;
+                }
+            }
+
+            throw new ArgumentNullException("EmptyTile is missing.");
+        }
+        
+        /// <summary>
+        /// Check if two tiles are valid neighbours
+        /// </summary>
+        /// <param name="emptyTile">The empty tile in the matrix</param>
+        /// <param name="currentTile">The tile that is checked if it is valid neighbour</param>
+        /// <returns>Returns boolean value</returns>
+        public static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
+        {
+            int tilesDistance = emptyTile.Position - currentTile.Position;
+            int tilesAbsoluteDistance = Math.Abs(tilesDistance);
+            bool areValidHorizontalNeighbours = false;
+            if (tilesAbsoluteDistance == HorizontalNeighbourDistance)
+            {
+                areValidHorizontalNeighbours = true;
+                if (((currentTile.Position + 1) % MatrixSize == 1 && tilesDistance == -1) || ((currentTile.Position + 1) % MatrixSize == 0 && tilesDistance == 1))
+                {
+                    areValidHorizontalNeighbours = false;
+                }
+            }
+
+            bool areValidVerticalNeighbours = (tilesAbsoluteDistance == VerticalNeighbourDistance);
+            bool areValidNeigbours = areValidHorizontalNeighbours || areValidVerticalNeighbours;
+
+            return areValidNeigbours;
         }
 
         /// <summary>
@@ -83,49 +127,6 @@ namespace GameFifteenProject
             tilesMatrix.Sort();
 
             return tilesMatrix;
-        }
-        
-        /// <summary>
-        /// Gets the empty tile in a matrix
-        /// </summary>
-        /// <param name="tilesMatrix">The matrix in which the empty tile is searched</param>
-        /// <returns>Returns the empty tile of the matrix</returns>
-        public static Tile GetEmptyTile(List<Tile> tilesMatrix)
-        {
-            foreach (Tile tile in tilesMatrix)
-            {
-                if (tile.Label == string.Empty)
-                {
-                    return tile;
-                }
-            }
-
-            throw new ArgumentNullException("EmptyTile is missing.");
-        }
-        
-        /// <summary>
-        /// Check if two tiles are valid neighbours
-        /// </summary>
-        /// <param name="emptyTile">The empty tile in the matrix</param>
-        /// <param name="currentTile">The tile that is checked if it is valid naighbour</param>
-        /// <returns>Returns boolean value</returns>
-        public static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
-        {
-            int tilesDistance = emptyTile.Position - currentTile.Position;
-            int tilesAbsoluteDistance = Math.Abs(tilesDistance);
-            bool areValidHorizontalNeighbours = false;
-            if (tilesAbsoluteDistance == HorizontalNeighbourDistance)
-            {
-                areValidHorizontalNeighbours = true;
-                if (((currentTile.Position + 1) % MatrixSize == 1 && tilesDistance == -1) || ((currentTile.Position + 1) % MatrixSize == 0 && tilesDistance == 1))
-                {
-                    areValidHorizontalNeighbours = false;
-                }
-            }
-            bool areValidVerticalNeighbours = (tilesAbsoluteDistance == VerticalNeighbourDistance);
-            bool areValidNeigbours = areValidHorizontalNeighbours || areValidVerticalNeighbours;
-
-            return areValidNeigbours;
         }
     }
 }
