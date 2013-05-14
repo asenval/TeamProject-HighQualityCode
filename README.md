@@ -39,4 +39,16 @@ TilePositionValidation method removed. Enum members renamed from camelCase to Pa
 22.Create GameFifteenUnitTests and adding unit tests  CommandTest			-- Georgi Rusev
 23.Adding unit test PlayerTest. 			-- Georgi Rusev
 24.Updating Readme.md			-- Georgi Rusev
+25.Change assembly name to GameFifteen.			-- Georgi Rusev
+26.Changing default name space to GameFifteenProject.			-- Georgi Rusev
+27.Move Using out of name spaces.			-- Georgi Rusev
+28.Move fields before methods and public methods before private.			-- Georgi Rusev
+29.Fix emty lines and missing lines in code.			-- Georgi Rusev
+
+
+
+
+
+
+
 
