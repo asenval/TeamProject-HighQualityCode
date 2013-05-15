@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifeteen", "GameFifeteen.csproj", "{EE945DFB-A7C6-48B5-A3ED-9079C6FA71B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteen", "GameFifteen.csproj", "{EE945DFB-A7C6-48B5-A3ED-9079C6FA71B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameFifteenUnitTests", "..\GameFifteenUnitTests\GameFifteenUnitTests.csproj", "{0CC4D8FA-581B-40E1-A4B5-7E1FEE136D67}"
 EndProject

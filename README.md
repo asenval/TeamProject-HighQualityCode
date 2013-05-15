@@ -50,6 +50,10 @@ TilePositionValidation method removed. Enum members renamed from camelCase to Pa
 32.Add AssemblyInfo.cs to the project    			- Asen
 33.Add ClearPlayers internal method and add it to be visible for test class GameFifteenUnitTests - Asen
 34.Correct Players list Sort, it is not working.
+35.Add test for Scoreboard.  					- Krasi and Asen
+36.Add test for GamePlay.					- Asen
+37.Add test for MatrixGenerator. 				- Georgi and Asen
+
 
 
 
