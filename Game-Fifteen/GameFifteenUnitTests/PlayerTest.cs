@@ -15,6 +15,13 @@
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        public void CreatePlayerNullName()
+        {
+            Player gamer = new Player(null, 5);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void CreatePlayerEmptyName()
         {
             Player gamer = new Player(string.Empty, 5);

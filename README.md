@@ -45,10 +45,20 @@ TilePositionValidation method removed. Enum members renamed from camelCase to Pa
 28.Move fields before methods and public methods before private.			-- Georgi Rusev
 29.Fix emty lines and missing lines in code.			-- Georgi Rusev
 
+30.Make DeleteAllExceptTopFivePlayers to private and call it every time when add player. We mustn't have more than 5 player in Player list. - Asen.
+31.Add CheckPlayerScores method to check if player must be added to playlist, and use it in PlayGameFifteen to ask for player name. - Asen
+32.Add AssemblyInfo.cs to the project    			- Asen
+33.Add ClearPlayers internal method and add it to be visible for test class GameFifteenUnitTests - Asen
+34.Correct Players list Sort, it is not working.
 
 
 
 
 
+
+V scoreboard documentation
+ добавиш доументация за пропъртитата и конструкорите
+ 
+Da se napravi Refactoring Documentation ot Readmeto.
 
 

@@ -19,11 +19,21 @@
         public int Position
         {
             get { return this.position; }
-            set { this.position = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Tile position must be positive number."); 
+                }
+                else
+                {
+                    this.position = value;
+                }
+            }
         }
 
         /// <summary>
-        /// Tile constructor
+        /// Initializes a new instance  of the <see cref="Tile"/> class.
         /// </summary>
         /// <param name="label">Tile label represented as a string</param>
         /// <param name="position">Tile position represented as an integer</param>

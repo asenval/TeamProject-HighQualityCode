@@ -28,7 +28,7 @@
                                 tilesMatrix = MatrixGenerator.GenerateMatrix();
                                 tilesMatrix = MatrixGenerator.ShuffleMatrix(tilesMatrix);
                                 isMatrixSolved = Gameplay.IsMatrixSolved(tilesMatrix);
-                                Gameplay.PrintMatrix(tilesMatrix);
+                                Console.WriteLine(Gameplay.GetMatrixAsString(tilesMatrix));
                                 break;
                             }
 
@@ -37,8 +37,8 @@
                                 Scoreboard.PrintScoreboard();
                                 break;
                             }
-
                     }
+
                     Console.Write("Enter a number to move: ");
                     currentCommand = Console.ReadLine();
 
@@ -51,7 +51,7 @@
                         {
                             Gameplay.MoveTiles(tilesMatrix, tileLabel);
                             movesCount++;
-                            Gameplay.PrintMatrix(tilesMatrix);
+                            Console.WriteLine(Gameplay.GetMatrixAsString(tilesMatrix));
                             isMatrixSolved = Gameplay.IsMatrixSolved(tilesMatrix);
                         }
                         catch (Exception exception)
@@ -77,13 +77,21 @@
                     else
                     {
                         Console.WriteLine("Congratulations! You won the game in {0} moves.", movesCount);
-                        Console.Write("Please enter your name for the top scoreboard: ");
-                        string playerName = Console.ReadLine();
-                        Player player = new Player(playerName, movesCount);
-                        Scoreboard.AddPlayer(player);
-                        Scoreboard.DeleteAllExceptTopFivePlayers();
+                        if (Scoreboard.CheckPlayerScores(movesCount))
+                        {
+                            Console.Write("Please enter your name for the top scoreboard: ");
+                            string playerName = Console.ReadLine();
+                            Player player = new Player(playerName, movesCount);
+                            Scoreboard.AddPlayer(player);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your scores are not at top five.");
+                        }
+
                         Scoreboard.PrintScoreboard();
                     }
+
                     currentCommand = "restart";
                     isMatrixSolved = false;
                     movesCount = 0;

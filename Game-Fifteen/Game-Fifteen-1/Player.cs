@@ -22,7 +22,7 @@
         }
 
         /// <summary>
-        /// Player constructor
+        /// Initializes a new instance  of the <see cref="Player"/> class.
         /// </summary>
         /// <param name="name">Player name represented as a string</param>
         /// <param name="moves">Player number of moves represented as an integer</param>

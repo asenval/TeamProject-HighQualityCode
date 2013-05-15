@@ -20,8 +20,9 @@
         public static List<Tile> GenerateMatrix()
         {
             List<Tile> tilesMatrix = new List<Tile>();
+            int maxPosition = MatrixSize * MatrixSize - 1;
 
-            for (int tilePosition = 0; tilePosition < 15; tilePosition++)
+            for (int tilePosition = 0; tilePosition < maxPosition; tilePosition++)
             {
                 string tileLabel = (tilePosition + 1).ToString();
 
@@ -29,7 +30,7 @@
                 tilesMatrix.Add(currentTile);
             }
 
-            Tile emptyTile = new Tile(string.Empty, 15);
+            Tile emptyTile = new Tile(string.Empty, maxPosition);
             tilesMatrix.Add(emptyTile);
 
             return tilesMatrix;
@@ -73,10 +74,10 @@
         }
         
         /// <summary>
-        /// Check if two tiles are valid neighbours
+        /// Check if tile is a valid neighbour to empty tile.
         /// </summary>
         /// <param name="emptyTile">The empty tile in the matrix</param>
-        /// <param name="currentTile">The tile that is checked if it is valid neighbour</param>
+        /// <param name="currentTile">The tile that is checked if it is valid a neighbour</param>
         /// <returns>Returns boolean value</returns>
         public static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
         {
@@ -92,7 +93,12 @@
                 }
             }
 
-            bool areValidVerticalNeighbours = (tilesAbsoluteDistance == VerticalNeighbourDistance);
+            bool areValidVerticalNeighbours = false;
+            if (tilesAbsoluteDistance == VerticalNeighbourDistance)
+            {
+                areValidVerticalNeighbours = true;
+            }
+
             bool areValidNeigbours = areValidHorizontalNeighbours || areValidVerticalNeighbours;
 
             return areValidNeigbours;
@@ -118,7 +124,7 @@
                 }
             }
 
-            int position = random.Next() % (neighbourTiles.Count());
+            int position = random.Next() % neighbourTiles.Count();
             Tile neighbourTile = neighbourTiles[position];
 
             int neighbourTilePosition = neighbourTile.Position;

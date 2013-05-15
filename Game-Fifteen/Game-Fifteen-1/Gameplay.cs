@@ -3,24 +3,25 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     /// <summary>
     /// Gameplay class contains gameplay logic
     /// </summary>
     public static class Gameplay
     {
-        private const int HorizontalNeighbourDistance = 1;
-        private const int VerticalNeighbourDistance = 4;
         private const int MatrixSize = 4;
+        private static readonly int maxTiles = MatrixSize * MatrixSize - 1;
 
         /// <summary>
         /// Print a matrix to the console 
         /// </summary>
         /// <param name="tilesMatrix">The matrix that is going to be printed</param>
-        public static void PrintMatrix(List<Tile> tilesMatrix)
+        public static string GetMatrixAsString(List<Tile> tilesMatrix)
         {
-            Console.WriteLine("  ------------");
-            Console.Write("| ");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(" -------------");
+            sb.Append("| ");
             int currentColumn = 0;
             for (int index = 0; index < 16; index++)
             {
@@ -28,32 +29,33 @@
 
                 if (currentTile.Label == string.Empty)
                 {
-                    Console.Write("   ");
+                    sb.Append("   ");
                 }
                 else if (int.Parse(currentTile.Label) < 10)
                 {
-                    Console.Write(' ' + currentTile.Label + ' ');
+                    sb.Append(' ' + currentTile.Label + ' ');
                 }
                 else
                 {
-                    Console.Write(currentTile.Label + ' ');
+                    sb.Append(currentTile.Label + ' ');
                 }
 
                 currentColumn++;
-                if (currentColumn == 4)
+                if (currentColumn == MatrixSize)
                 {
-                    Console.Write(" |");
-                    Console.WriteLine();
+                    sb.Append("|");
+                    sb.AppendLine();
                     if (index < 12)
                     {
-                        Console.Write("| ");
+                        sb.Append("| ");
                     }
 
                     currentColumn = 0;
                 }
             }
 
-            Console.WriteLine("  ------------");
+            sb.AppendLine(" -------------");
+            return sb.ToString();
         }
 
         /// <summary>
@@ -64,7 +66,7 @@
         /// <returns>Returns the new matrix</returns>
         public static List<Tile> MoveTiles(List<Tile> tilesMatrix, int tileLabel)
         {
-            if (tileLabel < 0 || tileLabel > 15)
+            if (tileLabel < 0 || tileLabel > maxTiles)
             {
                 throw new ArgumentException("Invalid move!");
             }
@@ -111,7 +113,7 @@
                 }
             }
 
-            if (count == 15)
+            if (count == maxTiles)
             {
                 return true;
             }

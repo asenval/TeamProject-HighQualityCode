@@ -14,6 +14,13 @@ namespace GameFifteenProject
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestCheckTileNegativePosition()
+        {
+            Tile tile = new Tile("7", -5);
+        }
+
+        [TestMethod]
         public void TestCheckTilePosition()
         {
             Tile tile = new Tile("7", 5);

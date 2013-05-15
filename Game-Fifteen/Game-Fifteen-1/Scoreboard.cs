@@ -27,7 +27,8 @@
         public static void AddPlayer(Player player)
         {
             players.Add(player);
-            players.Sort();
+            players.Sort((x,y) => y.Moves.CompareTo(x.Moves));
+            DeleteAllExceptTopFivePlayers();
         }
 
         /// <summary>
@@ -46,7 +47,7 @@
         /// <summary>
         /// Delete all players except top five from a list of players
         /// </summary>
-        public static void DeleteAllExceptTopFivePlayers()
+        private static void DeleteAllExceptTopFivePlayers()
         {
             for (int index = 0; index < players.Count(); index++)
             {
@@ -56,6 +57,21 @@
                     index--;
                 }
             }
+        }
+
+        public static bool CheckPlayerScores(int scores)
+        {
+            if (scores > players[players.Count - 1].Moves)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        internal static void ClearPlayer()
+        {
+            players.Clear();
         }
     }
 }
