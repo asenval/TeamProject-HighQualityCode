@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using GameFifteenLibrary;
 
     [TestClass]
     public class PlayerTest

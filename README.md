@@ -53,16 +53,11 @@ TilePositionValidation method removed. Enum members renamed from camelCase to Pa
 35.Add test for Scoreboard.  					- Krasi and Asen
 36.Add test for GamePlay.					- Asen
 37.Add test for MatrixGenerator. 				- Georgi and Asen
+38.Create GameFifteenLibrary project and move there all classes. - Asen
+39.Change name to Console application to GameFifteenUI and there remain only PlayGameFifteen class with MainMethod. - Asen
+40.Change PrintScoreboard method from print to the console to return string. - Asen
 
 
 
-
-
-
-
-V scoreboard documentation
- добавиш доументация за пропъртитата и конструкорите
- 
-Da se napravi Refactoring Documentation ot Readmeto.
 
 

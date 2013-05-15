@@ -1,4 +1,4 @@
-﻿namespace GameFifteenProject
+﻿namespace GameFifteenLibrary
 {
     using System;
     using System.Linq;

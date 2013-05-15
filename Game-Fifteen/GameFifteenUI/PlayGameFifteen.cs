@@ -1,8 +1,9 @@
-﻿namespace GameFifteenProject
+﻿namespace GameFifteenUI
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using GameFifteenLibrary;
 
     public class PlayGameFifteen
     {
@@ -34,7 +35,7 @@
 
                         case "top":
                             {
-                                Scoreboard.PrintScoreboard();
+                                Console.WriteLine(Scoreboard.PrintScoreboard());
                                 break;
                             }
                     }
@@ -89,7 +90,7 @@
                             Console.WriteLine("Your scores are not at top five.");
                         }
 
-                        Scoreboard.PrintScoreboard();
+                        Console.WriteLine(Scoreboard.PrintScoreboard());
                     }
 
                     currentCommand = "restart";

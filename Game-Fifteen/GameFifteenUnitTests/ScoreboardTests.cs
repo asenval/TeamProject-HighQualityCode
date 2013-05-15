@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text;
+using GameFifteenLibrary;
 
 namespace GameFifteenProject
 {
@@ -57,16 +58,14 @@ namespace GameFifteenProject
             Scoreboard.AddPlayer(player5);
             StringBuilder expectetPrint = new StringBuilder();
             expectetPrint.AppendLine("Scoreboard:");
-            expectetPrint.AppendLine(string.Format("1. {0} --> {1} moves", player5.Name, player5.Moves));
-            expectetPrint.AppendLine(string.Format("2. {0} --> {1} moves", player3.Name, player3.Moves));
+            expectetPrint.AppendLine(string.Format("1. {0} --> {1} moves", player2.Name, player2.Moves));
+            expectetPrint.AppendLine(string.Format("2. {0} --> {1} moves", player4.Name, player4.Moves));
             expectetPrint.AppendLine(string.Format("3. {0} --> {1} moves", player1.Name, player1.Moves));
-            expectetPrint.AppendLine(string.Format("4. {0} --> {1} moves", player4.Name, player4.Moves));
-            expectetPrint.AppendLine(string.Format("5. {0} --> {1} moves", player2.Name, player2.Moves));
-            StringBuilder sb = new StringBuilder();
-            Console.SetOut(new System.IO.StringWriter(sb));
-            Scoreboard.PrintScoreboard();
+            expectetPrint.AppendLine(string.Format("4. {0} --> {1} moves", player3.Name, player3.Moves));
+            expectetPrint.AppendLine(string.Format("5. {0} --> {1} moves", player5.Name, player5.Moves));
+            string scoreBoardPring = Scoreboard.PrintScoreboard();
 
-            Assert.AreEqual(expectetPrint.ToString(),sb.ToString());
+            Assert.AreEqual(expectetPrint.ToString(), scoreBoardPring);
         }
 
         [TestMethod]
@@ -111,8 +110,8 @@ namespace GameFifteenProject
             Scoreboard.AddPlayer(player4);
             Player player5 = new Player("Gosho", 17);
             Scoreboard.AddPlayer(player5);
-            bool isScoresBiggerThanOtherPlayersScores = Scoreboard.CheckPlayerScores(20);
-            Assert.IsTrue(isScoresBiggerThanOtherPlayersScores);
+            bool isScoresBiggerThanOtherPlayersScores = Scoreboard.CheckPlayerScores(30);
+            Assert.IsFalse(isScoresBiggerThanOtherPlayersScores);
         }
 
         [TestMethod]
@@ -129,8 +128,8 @@ namespace GameFifteenProject
             Scoreboard.AddPlayer(player4);
             Player player5 = new Player("Gosho", 17);
             Scoreboard.AddPlayer(player5);
-            bool isScoresBiggerThanOtherPlayersScores = Scoreboard.CheckPlayerScores(10);
-            Assert.IsFalse(isScoresBiggerThanOtherPlayersScores);
+            bool isScoresSmalerThanOtherPlayersScores = Scoreboard.CheckPlayerScores(10);
+            Assert.IsTrue(isScoresSmalerThanOtherPlayersScores);
         }
     }
 }

@@ -1,8 +1,9 @@
-﻿namespace GameFifteenProject
+﻿namespace GameFifteenLibrary
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     /// <summary>
     /// Contains a list of players
@@ -27,21 +28,22 @@
         public static void AddPlayer(Player player)
         {
             players.Add(player);
-            players.Sort((x,y) => y.Moves.CompareTo(x.Moves));
+            players.Sort((x,y) => x.Moves.CompareTo(y.Moves));
             DeleteAllExceptTopFivePlayers();
         }
 
         /// <summary>
         /// Print a list of players to the console 
         /// </summary>
-        public static void PrintScoreboard()
+        public static string PrintScoreboard()
         {
-            Console.WriteLine("Scoreboard:");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Scoreboard:");
             foreach (Player player in players)
             {
-                string scoreboardLine = string.Format("{0}. {1} --> {2} moves", players.IndexOf(player) + 1, player.Name, player.Moves);
-                Console.WriteLine(scoreboardLine);
+                sb.AppendLine(string.Format("{0}. {1} --> {2} moves", players.IndexOf(player) + 1, player.Name, player.Moves));                
             }
+            return sb.ToString();
         }
 
         /// <summary>
@@ -61,7 +63,11 @@
 
         public static bool CheckPlayerScores(int scores)
         {
-            if (scores > players[players.Count - 1].Moves)
+            if (players.Count == 0)
+            {
+                return true;
+            }
+            if (scores < players[players.Count - 1].Moves)
             {
                 return true;
             }

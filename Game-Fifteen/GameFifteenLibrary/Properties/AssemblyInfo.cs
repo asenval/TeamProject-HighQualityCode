@@ -5,14 +5,15 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("01.School")]
+[assembly: AssemblyTitle("GameFifteenLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Project-OS.org")]
-[assembly: AssemblyProduct("01.School")]
+[assembly: AssemblyProduct("GameFifteenLibrary")]
 [assembly: AssemblyCopyright("Copyright © Project-OS.org 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: InternalsVisibleTo("GameFifteenUnitTests")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -20,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d28b76d7-1f51-47d0-a4e4-e119eee6a563")]
+[assembly: Guid("e9329495-55b3-4893-be4e-060ab70c380f")]
 
 // Version information for an assembly consists of the following four values:
 //
