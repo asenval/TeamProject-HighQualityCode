@@ -86,7 +86,7 @@
             }
             else
             {
-                throw new Exception("Invalid move!");
+                throw new InvalidOperationException("Invalid move!");
             }
 
             return newMatrix;
@@ -133,7 +133,7 @@
         {
             for (int index = 0; index < tilesMatrix.Count; index++)
             {
-                int currentTileLabel = 0;
+                int currentTileLabel;
                 bool successfulParsing = int.TryParse(tilesMatrix[index].Label, out currentTileLabel);
                 if (successfulParsing && tileLabel == currentTileLabel)
                 {

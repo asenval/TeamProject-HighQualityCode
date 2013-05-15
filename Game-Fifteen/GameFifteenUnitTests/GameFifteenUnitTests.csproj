@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CommandTest.cs" />
+    <Compile Include="MatrixGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlayerTest.cs" />
     <Compile Include="ScoreboardTests.cs" />
