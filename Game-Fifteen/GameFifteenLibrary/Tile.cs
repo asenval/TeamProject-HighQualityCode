@@ -11,11 +11,17 @@
         private readonly string label;
         private int position;
 
+        /// <summary>
+        /// Contains the label of the tile
+        /// </summary>
         public string Label
         {
             get { return this.label; }
         }
 
+        /// <summary>
+        /// Contains the position of the tile in the matrix
+        /// </summary>
         public int Position
         {
             get { return this.position; }

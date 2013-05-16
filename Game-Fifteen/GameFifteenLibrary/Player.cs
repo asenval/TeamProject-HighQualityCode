@@ -11,18 +11,24 @@
         private readonly string name;
         private readonly int moves;
 
+        /// <summary>
+        /// Contains the name of the player
+        /// </summary>
         public string Name
         {
             get { return this.name; }
         }
 
+        /// <summary>
+        /// Contains the number of moves of the player
+        /// </summary>
         public int Moves
         {
             get { return this.moves; }
         }
 
         /// <summary>
-        /// Initializes a new instance  of the <see cref="Player"/> class.
+        /// Initializes a new instance of the <see cref="Player"/> class.
         /// </summary>
         /// <param name="name">Player name represented as a string</param>
         /// <param name="moves">Player number of moves represented as an integer</param>

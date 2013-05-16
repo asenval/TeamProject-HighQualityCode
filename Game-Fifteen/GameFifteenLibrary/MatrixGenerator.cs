@@ -77,7 +77,7 @@
         /// Check if tile is a valid neighbour to empty tile.
         /// </summary>
         /// <param name="emptyTile">The empty tile in the matrix</param>
-        /// <param name="currentTile">The tile that is checked if it is valid a neighbour</param>
+        /// <param name="currentTile">The tile that is checked if it is a valid neighbour</param>
         /// <returns>Returns boolean value</returns>
         public static bool AreValidNeighbours(Tile emptyTile, Tile currentTile)
         {

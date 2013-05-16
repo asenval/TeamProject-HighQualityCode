@@ -12,6 +12,9 @@
     {
         private static readonly List<Player> players = new List<Player>();
 
+        /// <summary>
+        /// Contains the number of players in the list
+        /// </summary>
         public static int Count
         {
             get
@@ -61,6 +64,12 @@
             }
         }
 
+        /// <summary>
+        /// Compares the score of the last player of the list with an integer and 
+        /// returns true if it is bigger
+        /// </summary>
+        /// <param name="scores">An integer that is compared with the score of the player</param>
+        /// <returns>Returns boolean value</returns>
         public static bool CheckPlayerScores(int scores)
         {
             if (players.Count == 0)
@@ -75,6 +84,9 @@
             return false;
         }
 
+        /// <summary>
+        /// Clears the player list
+        /// </summary>
         internal static void ClearPlayer()
         {
             players.Clear();
