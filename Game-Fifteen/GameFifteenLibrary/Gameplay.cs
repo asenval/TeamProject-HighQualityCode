@@ -17,6 +17,7 @@
         /// Print a matrix to the console 
         /// </summary>
         /// <param name="tilesMatrix">The matrix that is going to be printed</param>
+        /// <returns>Returns matrix as a string.</returns>
         public static string GetMatrixAsString(List<Tile> tilesMatrix)
         {
             StringBuilder sb = new StringBuilder();

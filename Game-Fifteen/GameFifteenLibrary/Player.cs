@@ -12,7 +12,7 @@
         private readonly int moves;
 
         /// <summary>
-        /// Contains the name of the player
+        /// Gets the name of the player
         /// </summary>
         public string Name
         {
@@ -20,7 +20,7 @@
         }
 
         /// <summary>
-        /// Contains the number of moves of the player
+        /// Gets the number of moves of the player
         /// </summary>
         public int Moves
         {

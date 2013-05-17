@@ -1,12 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GameFifteenLibrary;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using GameFifteenLibrary;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class GamePlayTest
     {

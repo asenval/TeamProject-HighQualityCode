@@ -5,8 +5,14 @@
     using System.Linq;
     using GameFifteenLibrary;
 
+    /// <summary>
+    /// Class that generate the console UI
+    /// </summary>
     public class PlayGameFifteen
     {
+        /// <summary>
+        /// Main method of the program.
+        /// </summary>
         public static void Main()
         {
             List<Tile> tilesMatrix = new List<Tile>();

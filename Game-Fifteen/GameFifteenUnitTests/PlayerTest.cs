@@ -1,8 +1,8 @@
 ﻿namespace GameFifteenProject
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using GameFifteenLibrary;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class PlayerTest

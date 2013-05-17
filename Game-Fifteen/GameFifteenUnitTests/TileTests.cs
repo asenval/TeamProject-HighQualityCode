@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameFifteenLibrary;
-
-namespace GameFifteenProject
+﻿namespace GameFifteenProject
 {
+    using System;
+    using GameFifteenLibrary;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class TileTests
     {

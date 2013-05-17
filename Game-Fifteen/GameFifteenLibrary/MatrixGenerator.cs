@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Class for generating tile matrix.
+    /// </summary>
     public static class MatrixGenerator
     {
         private const int MatrixSize = 4;

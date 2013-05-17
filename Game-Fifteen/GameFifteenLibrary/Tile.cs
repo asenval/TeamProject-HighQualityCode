@@ -12,7 +12,7 @@
         private int position;
 
         /// <summary>
-        /// Contains the label of the tile
+        /// Gets the label of the tile
         /// </summary>
         public string Label
         {
@@ -20,11 +20,15 @@
         }
 
         /// <summary>
-        /// Contains the position of the tile in the matrix
+        /// Gets or sets the position of the tile in the matrix
         /// </summary>
         public int Position
         {
-            get { return this.position; }
+            get
+            {
+                return this.position;
+            }
+
             set
             {
                 if (value < 0)

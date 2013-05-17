@@ -2,44 +2,16 @@
 {
     using System;
     using System.Collections.Generic;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Linq;
     using GameFifteenLibrary;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// Summary description for MatrixGeneratorTest
+    /// Tests for MatrixGenerator class
     /// </summary>
     [TestClass]
     public class MatrixGeneratorTest
     {
-        bool CompareTileLists(List<Tile> list1, List<Tile> list2)
-        {
-            bool areEqual = true;
-
-            if (list1.Count != list2.Count)
-            {
-                return false;
-            }
-
-            foreach (Tile item in list1)
-            {
-                Tile tile1 = item;
-                Tile tile2 = list2.ElementAt(list1.IndexOf(item));
-
-                if (0 != tile1.CompareTo(tile2))
-                {
-                    areEqual = false;
-                }
-
-                if (!tile1.Label.Equals(tile2.Label))
-                {
-                    areEqual = false;
-                }
-            }
-
-            return areEqual;
-        }
-
         [TestMethod]
         public void TestGenerateOrderedMatrix()
         {
@@ -63,7 +35,7 @@
 
             List<Tile> generatedMatrix = MatrixGenerator.GenerateMatrix();
 
-            Assert.IsTrue(CompareTileLists(templateMatrix, generatedMatrix));
+            Assert.IsTrue(this.CompareTileLists(templateMatrix, generatedMatrix));
         }
 
         [TestMethod]
@@ -90,7 +62,7 @@
             List<Tile> generatedMatrix = MatrixGenerator.GenerateMatrix();
             generatedMatrix = MatrixGenerator.ShuffleMatrix(generatedMatrix);
 
-            Assert.IsFalse(CompareTileLists(templateMatrix, generatedMatrix), "Matrix is not shuffeled.");
+            Assert.IsFalse(this.CompareTileLists(templateMatrix, generatedMatrix), "Matrix is not shuffeled.");
         }
 
         [TestMethod]
@@ -185,6 +157,34 @@
             Tile currentTile = new Tile("12", 5);
 
             Assert.IsFalse(MatrixGenerator.AreValidNeighbours(emptyTile, currentTile), "Empty tile are not neighbours.");
+        }
+
+        private bool CompareTileLists(List<Tile> list1, List<Tile> list2)
+        {
+            bool areEqual = true;
+
+            if (list1.Count != list2.Count)
+            {
+                return false;
+            }
+
+            foreach (Tile item in list1)
+            {
+                Tile tile1 = item;
+                Tile tile2 = list2.ElementAt(list1.IndexOf(item));
+
+                if (0 != tile1.CompareTo(tile2))
+                {
+                    areEqual = false;
+                }
+
+                if (!tile1.Label.Equals(tile2.Label))
+                {
+                    areEqual = false;
+                }
+            }
+
+            return areEqual;
         }
     }
 }
